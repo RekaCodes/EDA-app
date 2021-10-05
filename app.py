@@ -57,29 +57,5 @@ def main():
             st_profile_report(report)
 
 
-
-    # if data_file is not None:
-    #     @st.cache
-    #     def load_data():
-    #         csv = pd.read_csv(data_file)
-    #         return csv
-    #     df = load_data()
-    #     report = ProfileReport(df)
-
-    #     st.header('**Input DataFrame**')
-    #     st.write(df)
-    #     st.write('---')
-    #     st.header('**EDA Report**')
-    #     st_profile_report(report)
-    # else:
-    #     st.info('upload file to begin.')
-
-
-
-
-
-
-
-
 if __name__ == "__main__":
     main()
