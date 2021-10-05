@@ -2,7 +2,7 @@ import numpy as np
 from numpy.random import sample
 import pandas as pd
 import streamlit as st
-st.set_page_config (layout="wide")
+st.set_page_config(layout="wide")
 from streamlit import uploaded_file_manager
 from pandas_profiling import ProfileReport
 from streamlit_pandas_profiling import st_profile_report
@@ -37,7 +37,7 @@ def main():
             csv = pd.read_csv(data_file)
             return csv
         df = load_data()
-        report = ProfileReport(df, title='Report', explorative=True)        
+        report = ProfileReport(df, explorative=True)        
         st.dataframe(df)
         st_profile_report(report)
 
@@ -52,32 +52,9 @@ def main():
                 )
                 return sample_df
             df = load_data()
-            report = ProfileReport(df, title='Report', explorative=True) 
+            report = ProfileReport(df, explorative=True) 
             st.dataframe(df)
             st_profile_report(report)
-
-
-
-    # if data_file is not None:
-    #     @st.cache
-    #     def load_data():
-    #         csv = pd.read_csv(data_file)
-    #         return csv
-    #     df = load_data()
-    #     report = ProfileReport(df)
-
-    #     st.header('**Input DataFrame**')
-    #     st.write(df)
-    #     st.write('---')
-    #     st.header('**EDA Report**')
-    #     st_profile_report(report)
-    # else:
-    #     st.info('upload file to begin.')
-
-
-
-
-
 
 
 
