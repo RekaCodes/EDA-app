@@ -52,7 +52,7 @@ def main():
                 )
                 return sample_df
             df = load_data()
-            report = ProfileReport(df, title='Report', explorative=True)
+            report = ProfileReport(df, title='Report', explorative=True) 
             st.dataframe(df)
             st_profile_report(report)
 
