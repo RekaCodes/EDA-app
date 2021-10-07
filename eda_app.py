@@ -12,7 +12,6 @@ def main():
 
     # sidebar
     st.sidebar.header('File Uploader')
-    # st.sidebar.write('---')
     data_file = st.sidebar.file_uploader('Upload a file or select the sample dataset below.')
 
     
@@ -24,18 +23,14 @@ def main():
         
         ---''')
 
-    
+    df = None
+
     if data_file is not None:
         @st.cache
         def load_data():
             csv = pd.read_csv(data_file)
             return csv
         df = load_data()
-        report = ProfileReport(df, explorative=True)        
-        st.write('### Input Data')
-        st.dataframe(df)
-        st.write('### EDA Report')
-        st_profile_report(report)
 
     elif st.sidebar.button('Click for sample dataset.'):
         @st.cache
@@ -43,6 +38,8 @@ def main():
             sample_df = pd.read_csv('titanic_sample_data.csv')
             return sample_df
         df = load_data()
+
+    if df is not None:
         report = ProfileReport(df, explorative=True) 
         st.write('### Input Data')
         st.dataframe(df)
@@ -50,10 +47,16 @@ def main():
         st.write('### EDA Report')
         st_profile_report(report)
 
+        def download_report():
+            report.to_file('EDA_report.html')
+
+        st.sidebar.write('---')
+        st.sidebar.button('Download Report',on_click=download_report)
+
     else:
-        st.info('Upload data to begin.')
-
-
+        st.info('To begin, upload data or select Sample Data from the sidebar.')
+    
+   
 
 if __name__ == "__main__":
     main()
