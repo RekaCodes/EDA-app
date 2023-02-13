@@ -1,13 +1,11 @@
-import numpy as np
-from numpy.random import sample
+# import libraries
 import pandas as pd
-import pandas_profiling
 import streamlit as st
 st.set_page_config(layout="wide")
-from streamlit import uploaded_file_manager
 from pandas_profiling import ProfileReport
 from streamlit_pandas_profiling import st_profile_report
 
+# main app
 def main():   
 
     # sidebar
